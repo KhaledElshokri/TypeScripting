@@ -1,10 +1,16 @@
-// Functions
+// Objects
 
-function calculateTax(income: number, taxYear = 2022): number{
-    if(taxYear < 2022)
-        return income * 1.2;
-    else
-    return income * 1.3;
+
+type Employee = {
+    
+    readonly id: number,
+    name: string,
+    retire: (date: Date) => void
 }
-
-calculateTax(10_000);
+let employee: Employee = {
+    id: 1,
+    name: 'Khaled',
+    retire: (date: Date) => {
+        console.log(date);
+    }
+};
