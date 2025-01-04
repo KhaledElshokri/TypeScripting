@@ -1,29 +1,21 @@
-// Type intersection
-type Draggable = {
-    drag: () => void
+// optional Chaining 
+
+type Customer = {
+    birthday?: Date
 };
 
-type Resizable = {
-    resize: () => void
-};
-
-type UIWidget = Draggable & Resizable;
-
-let textBox: UIWidget = {
-    drag: () => {},
-    resize: () => {}
-};
-
-// Union types
-function kgtoLbs(weight: number | string): number{
-
-    // Narowing
-    if(typeof weight === 'number')
-        return weight * 2.2;
-    else
-        return parseInt(weight) * 2.2;
-
+function getCustomer(id: number): Customer | null | undefined{
+    return id === 0? null: {birthday:new Date()};
 }
 
-kgtoLbs(10);
-kgtoLbs("10kg")
+let customer = getCustomer(1);
+// Optional property access operator
+console.log(customer?.birthday?.getFullYear());
+
+// Optional element access operator
+// if its an array
+// customers?.[0] to check if that element in the array is null
+
+// Optional call
+// let log: any = null;
+// log?.('a'); checks if the log binding is refrencing a non null function
